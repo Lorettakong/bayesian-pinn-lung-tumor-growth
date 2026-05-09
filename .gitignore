@@ -1,0 +1,28 @@
+.DS_Store
+.idea/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.swp
+
+# Regenerated intermediate outputs
+outputs/
+outputs_bgp/
+outputs_bpinn/
+outputs_bpinn_smoke/
+outputs_gp/
+outputs_hmc/
+outputs_hmc_gompertz_bayes/
+outputs_holdout/
+outputs_nls/
+outputs_pinn_bayes/
+outputs_pinn_det/
+outputs_uq/
+outputs_uq_gompertz_bayes/
+
+# Local data artifacts
+region_masks/
+*.pt
+*.npz

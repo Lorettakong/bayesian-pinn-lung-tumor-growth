@@ -1,0 +1,2 @@
+Method,RMSE (log),p-value vs Bayesian PINN (RMSE log),MAE (volume),p-value vs Bayesian PINN (MAE volume),Mean Rel. CI Width,Interval Score,Coverage Deviation
+Gompertz + Bayesian,0.109,N/A,0.471,N/A,0.488,2.627,0.05
