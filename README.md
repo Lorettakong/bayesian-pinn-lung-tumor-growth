@@ -126,6 +126,26 @@ Main packages:
 - `scipy`
 - `matplotlib`
 
+## Running the Main Analyses
+
+A typical workflow for reproducing the manuscript results is:
+
+```bash
+python build_nlstt_volume_dataset.py
+python nlstt_population_residual_pipeline.py
+python generate_nlstt_population_residual_paper_outputs.py
+python generate_additional_results_effect_error_lambda.py
+python compute_naive_baselines.py
+python compute_population_baselines_300.py
+python compute_enhanced_baseline_stats.py
+python run_nlstt_8603_map_robustness.py
+```
+
+The first three scripts rebuild the processed three-scan cohort, run the main
+NLSTt-300 grouped cross-validation experiment, and export the manuscript-ready
+figures and tables. The additional baseline and robustness scripts reproduce
+the supplementary comparison outputs used in the manuscript.
+
 ## Reproducibility Notes
 
 The repository includes processed NLSTt-derived tables used for the manuscript
