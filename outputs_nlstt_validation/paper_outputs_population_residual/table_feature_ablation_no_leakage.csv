@@ -1,0 +1,6 @@
+feature_set,n_features,rmse_log,mae_volume,corr_pred_residual_target,Feature set
+all_no_leakage_features,12,0.5279477031919316,0.7636375619618806,0.3337193710990759,All non-leaking features
+early_ct_only,8,0.5253502389165104,0.7853278408226533,0.3373713002459826,Early CT features only
+gompertz_prediction_only,2,0.5602758267803705,0.8410767652238237,0.0387710629829082,Gompertz prediction only
+gompertz_uncertainty_only_no_leak,2,0.5425598581450085,0.7999078546551494,0.2473978219386417,Gompertz uncertainty only
+gompertz_prediction_uncertainty_no_leak,4,0.5381746325405559,0.7977335699886434,0.2679562482419328,Gompertz prediction + uncertainty

@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\caption{Feature ablation for the leakage-free population residual learner.}
+\label{tab:nlstt_population_residual_ablation}
+\begin{tabular}{lcccc}
+\toprule
+Feature set & No. features & RMSE (log) & MAE (volume) & Corr. \\
+\midrule
+All non-leaking features & 12 & 0.5279 & 0.7636 & 0.334 \\
+Early CT features only & 8 & 0.5254 & 0.7853 & 0.337 \\
+Gompertz prediction only & 2 & 0.5603 & 0.8411 & 0.039 \\
+Gompertz uncertainty only & 2 & 0.5426 & 0.7999 & 0.247 \\
+Gompertz prediction + uncertainty & 4 & 0.5382 & 0.7977 & 0.268 \\
+\bottomrule
+\end{tabular}
+\end{table}

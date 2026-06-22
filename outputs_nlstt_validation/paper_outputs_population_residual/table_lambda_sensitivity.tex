@@ -1,0 +1,21 @@
+\begin{table}[!htbp]
+\centering
+\caption{Sensitivity of prediction accuracy to the residual shrinkage coefficient $\lambda$.}
+\label{tab:lambda_sensitivity}
+\begin{tabular}{lcc}
+\toprule
+$\lambda$ & RMSE (log) & MAE (volume) \\
+\midrule
+0.00 & 0.5662 & 0.8375 \\
+0.25 & 0.5471 & 0.7890 \\
+0.50 & 0.5341 & 0.7597 \\
+0.75 & 0.5276 & 0.7604 \\
+\textbf{1.00} & \textbf{0.5279} & \textbf{0.7636} \\
+1.25 & 0.5350 & 0.7711 \\
+1.50 & 0.5487 & 0.7848 \\
+\bottomrule
+\end{tabular}
+
+\vspace{1mm}
+\footnotesize{$\lambda=0$ corresponds to the Bayesian Gompertz backbone without residual correction, and $\lambda=1$ corresponds to the proposed cross-validated residual correction used in the main experiments. RMSE is reported in the log-volume domain and MAE is reported in the original volume domain for consistency with the main cohort-level evaluation.}
+\end{table}

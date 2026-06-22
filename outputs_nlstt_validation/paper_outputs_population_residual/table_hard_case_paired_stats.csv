@@ -1,0 +1,3 @@
+metric,n,mean_diff_proposed_minus_gompertz,wilcoxon_p
+squared log error,100,-0.05617396924096096,0.006953041443523982
+absolute volume error,100,-0.24436895858262864,0.00582387066555231

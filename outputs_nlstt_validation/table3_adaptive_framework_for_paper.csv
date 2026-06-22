@@ -1,0 +1,6 @@
+method,method_display,n_patients,rmse_y_holdout,mae_y_holdout,rmse_V_holdout,mae_V_holdout,coverage_95CI_V,mean_interval_score_V,mean_relative_interval_width_V,residual_selected,gate_strategy,uncertainty_source
+adaptive,Adaptive Residual Framework,300,0.5805153177933435,0.4171051570724961,1.675497945822398,0.8583470032298502,0.6,12.161373494679378,1.1337055586498568,,,
+gompertz_bayes,Bayesian Gompertz,300,0.5662328023263598,0.41274042415022755,1.6681504431925136,0.8550826884886091,0.6,12.161373645922854,1.1337055586498568,,,
+residual_map,Residual PINN MAP,300,0.5971992244929764,0.42922825260837727,2.144713231516222,1.032340267,,,,,,
+nls,NLS Gompertz,300,0.6047741092559216,0.4315570822280891,2.791124067503602,1.2278912347036788,,,,,,
+bayes,Original Bayesian PINN,300,,,,,,,,,,

@@ -1,0 +1,19 @@
+\begin{table}[!htbp]
+\centering
+\caption{Paired statistical comparison between the proposed residual framework and baseline methods.}
+\label{tab:paired_effect_size_tests}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lcccc}
+\toprule
+Baseline method & $p_{\mathrm{log}}$ & $p_{\mathrm{vol}}$ & $r_{\mathrm{rb,log}}$ & $r_{\mathrm{rb,vol}}$ \\
+\midrule
+Bayesian Gompertz & $7.3\times10^{-6}$ & $4.6\times10^{-5}$ & 0.299 & 0.272 \\
+Residual PINN MAP only & $3.3\times10^{-4}$ & $7.5\times10^{-6}$ & 0.239 & 0.298 \\
+NLS Gompertz & $4.0\times10^{-4}$ & $6.9\times10^{-6}$ & 0.236 & 0.300 \\
+\bottomrule
+\end{tabular}%
+}
+
+\vspace{1mm}
+\footnotesize{$p_{\mathrm{log}}$ is based on paired squared log-volume error and $p_{\mathrm{vol}}$ on paired absolute volume error. Rank-biserial effect sizes ($r_{\mathrm{rb}}$) are computed from paired signed-rank differences; positive values indicate lower held-out error for the proposed framework.}
+\end{table}

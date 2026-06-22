@@ -1,0 +1,18 @@
+\begin{table*}[t]
+\centering
+\caption{Comparison with baseline methods on the NLSTt-300 cohort. Paired Wilcoxon tests compare the proposed population residual model against each baseline using trajectory-level held-out errors.}
+\label{tab:method_comparison_stats}
+\begin{tabular}{lcccccc}
+\toprule
+Method & RMSE (log) & MAE (volume) & $p_{\mathrm{log}}$ & $p_{\mathrm{vol}}$ & Coverage (Wilson 95\% CI) & Interval score \\
+\midrule
+Bayesian Gompertz & 0.5662 & 0.8551 & -- & -- & 0.600 [0.544, 0.654] & 12.1614 \\
+Gompertz-guided population residual & 0.5279 & 0.7636 & 7.3e-06 & 4.6e-05 & 0.600 [0.544, 0.654] & 12.1614 \\
+\textbf{Population residual + conformal} & \textbf{0.5279} & \textbf{0.7636} & \textbf{7.3e-06} & \textbf{4.6e-05} & \textbf{0.950 [0.919, 0.969]} & \textbf{8.4727} \\
+Residual PINN MAP only & 0.5972 & 1.0323 & 3.3e-04 & 7.5e-06 & N/A & N/A \\
+NLS Gompertz & 0.6048 & 1.2279 & 4.0e-04 & 6.9e-06 & N/A & N/A \\
+\bottomrule
+\end{tabular}
+\vspace{1mm}
+\footnotesize{$p_{\mathrm{log}}$ is based on paired squared log-error and $p_{\mathrm{vol}}$ on paired absolute volume error. For the proposed rows, tests are against Bayesian Gompertz; for other baselines, tests compare the proposed population residual model against that baseline. Coverage is reported only for methods with predictive intervals.}
+\end{table*}

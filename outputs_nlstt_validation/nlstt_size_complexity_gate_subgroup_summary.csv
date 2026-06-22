@@ -1,0 +1,16 @@
+subset,method,method_display,n,selected_residual,rmse_log,mae_volume
+All,gompertz_bayes,Bayesian Gompertz,300,,0.5662328023263598,0.8550826884886091
+All,size_complexity_gate,Size-aware gate,300,119.0,0.5513401353862017,0.8470585857563728
+All,residual_map,Residual MAP,300,,0.5971992244929764,1.032340267
+Growth class: decreasing,gompertz_bayes,Bayesian Gompertz,75,,0.8059335099763213,0.7351163886919776
+Growth class: decreasing,size_complexity_gate,Size-aware gate,75,37.0,0.766233510968141,0.6775491411374919
+Growth class: decreasing,residual_map,Residual MAP,75,,0.7476956104382442,0.4850898043999999
+Growth class: rapid_growth,gompertz_bayes,Bayesian Gompertz,75,,0.7101637421671192,1.5134347373282238
+Growth class: rapid_growth,size_complexity_gate,Size-aware gate,75,41.0,0.6814662189599511,1.4916123893091893
+Growth class: rapid_growth,residual_map,Residual MAP,75,,0.6909656437644207,1.4878557134666668
+Growth class: slow_growth,gompertz_bayes,Bayesian Gompertz,75,,0.23181504189949487,0.4195452020584013
+Growth class: slow_growth,size_complexity_gate,Size-aware gate,75,32.0,0.29923010610417067,0.4691224566625875
+Growth class: slow_growth,residual_map,Residual MAP,75,,0.46356991673470505,0.9792977884
+Growth class: stable,gompertz_bayes,Bayesian Gompertz,75,,0.2736398525051234,0.7522344258758339
+Growth class: stable,size_complexity_gate,Size-aware gate,75,9.0,0.2735966414951976,0.7499503559162226
+Growth class: stable,residual_map,Residual MAP,75,,0.4185789537318251,1.1771177617333333

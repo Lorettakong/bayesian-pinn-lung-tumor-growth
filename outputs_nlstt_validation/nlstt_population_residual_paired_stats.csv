@@ -1,0 +1,13 @@
+method_a,method_b,metric,wilcoxon_p,mean_diff_a_minus_b
+population_residual,gompertz_bayes,sq_error_y,7.2532040705640545e-06,-0.04189080912472645
+population_residual,gompertz_bayes,abs_error_y,9.706554505413755e-06,-0.04073410232664957
+population_residual,gompertz_bayes,sq_error_V,0.0001646168293545375,-0.8503007802843305
+population_residual,gompertz_bayes,abs_error_V,4.572319817469867e-05,-0.09144512652672866
+population_residual,residual_map,sq_error_y,0.0003319123396283091,-0.07791813642937641
+population_residual,residual_map,abs_error_y,0.00021722839509476469,-0.057221930784799244
+population_residual,residual_map,sq_error_V,1.594487527157119e-05,-2.6673697246017065
+population_residual,residual_map,abs_error_V,7.459600036550523e-06,-0.2687027050381195
+population_residual,nls,sq_error_y,0.0004004025311880447,-0.08702294592065737
+population_residual,nls,abs_error_y,9.323066672905284e-05,-0.05955076040451104
+population_residual,nls,sq_error_V,1.3179180252486984e-05,-5.857948439358804
+population_residual,nls,abs_error_V,6.856677986372355e-06,-0.4642536727417983

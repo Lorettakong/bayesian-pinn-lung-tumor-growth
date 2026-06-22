@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\caption{Ablation analysis of the leakage-free population residual learner on the NLSTt-300 cohort.}
+\label{tab:ablation_residual_features}
+\begin{tabular}{lcccc}
+\toprule
+Model variant & RMSE (log) & MAE (volume) & $\Delta$RMSE & $\Delta$MAE \\
+\midrule
+Bayesian Gompertz backbone only & 0.5662 & 0.8551 & 0.0\% & 0.0\% \\
+All non-leaking features & 0.5279 & \textbf{0.7636} & 6.8\% & \textbf{10.7\%} \\
+Early CT features only & \textbf{0.5254} & 0.7853 & \textbf{7.2\%} & 8.2\% \\
+Gompertz prediction only & 0.5603 & 0.8411 & 1.1\% & 1.6\% \\
+Gompertz uncertainty only & 0.5426 & 0.7999 & 4.2\% & 6.5\% \\
+Gompertz prediction + uncertainty & 0.5382 & 0.7977 & 5.0\% & 6.7\% \\
+\bottomrule
+\end{tabular}
+\vspace{1mm}
+\footnotesize{Positive $\Delta$ values indicate improvement over the Bayesian Gompertz backbone. Feature sets use only information available before the held-out third CT scan.}
+\end{table}

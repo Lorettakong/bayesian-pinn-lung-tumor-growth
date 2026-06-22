@@ -1,0 +1,10 @@
+method_display,n_patients_available,rmse_V_holdout,mae_V_holdout,rmse_y_holdout,mae_y_holdout,mean_relative_interval_width_V,mean_interval_score_V,coverage_95CI_V,coverage_minus_target_95CI_V
+Residual BPINN,0,,,,,,,,
+Residual PINN MAP,300,2.144713231516222,1.032340267,0.5971992244929764,0.42922825260837727,,,,
+Gompertz + PINN + Bayesian,0,,,,,,,,
+PINN + Bayesian,0,,,,,,,,
+Pure PINN,0,,,,,,,,
+Gompertz + Bayesian,300,1.6681504431925136,0.8550826884886094,0.5662328023263598,0.41274042415022755,1.1337055586498568,12.161373645922854,0.6,-0.35
+Bayesian GP,0,,,,,,,,
+Pure GP,0,,,,,,,,
+Pure Gompertz,300,2.791124067503602,1.2278912347036788,0.6047741092559216,0.4315570822280891,,,,

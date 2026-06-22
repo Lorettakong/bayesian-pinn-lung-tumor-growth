@@ -1,0 +1,6 @@
+method,method_display,n_patients,rmse_log,mae_log,rmse_volume,mae_volume,coverage_95,interval_score,mean_relative_interval_width_V,residual_selected,gate_strategy,uncertainty_source
+gompertz_bayes,Bayesian Gompertz,300,0.5662328023263598,0.41274042415022755,1.6681504431925136,0.8550826884886091,0.6,12.161373645922854,1.1337055586498568,,No residual / no gate,Bayesian Gompertz
+residual_map,Residual PINN MAP only,300,0.5971992244929764,0.42922825260837727,2.144713231516222,1.032340267,,,,,Always residual,None
+residual_always,Residual PINN MAP + Gompertz interval,300,0.5971992244929764,0.42922825260837727,2.144713231516222,1.032340267,0.6,12.161373645922854,1.1337055586498568,300.0,Always residual,Bayesian Gompertz
+one_sided,One-sided residual gate,300,0.5829832219429362,0.42028455222445965,1.6688557889189906,0.8575233134487096,0.6,12.161373645922854,1.1337055586498568,1.0,$s_i > \\tau$,Bayesian Gompertz
+two_sided,Adaptive residual framework,300,0.5805153177933435,0.4171051570724961,1.675497945822398,0.8583470032298502,0.6,12.161373494679378,1.1337055586498568,13.0,$\\tau_{\\mathrm{low}} < s_i \\leq \\tau_{\\mathrm{high}}$,Bayesian Gompertz

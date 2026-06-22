@@ -1,0 +1,15 @@
+\begin{table}[t]
+\centering
+\caption{Gate ablation results on the NLSTt-300 cohort.}
+\begin{tabular}{lccccc}
+\toprule
+Method & RMSE (log) & MAE (vol.) & Coverage & Interval score & Residual selected \\
+\midrule
+Bayesian Gompertz & 0.5662 & 0.8551 & 0.600 & 12.1614 & N/A \\
+Residual PINN MAP only & 0.5972 & 1.0323 & nan & nan & N/A \\
+Residual PINN MAP + Gompertz interval & 0.5972 & 1.0323 & 0.600 & 12.1614 & 300 \\
+One-sided residual gate & 0.5830 & 0.8575 & 0.600 & 12.1614 & 1 \\
+\textbf{Adaptive residual framework} & \textbf{0.5805} & \textbf{0.8583} & \textbf{0.600} & \textbf{12.1614} & \textbf{13} \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,5 @@
+method_a,method_b,metric,wilcoxon_p,mean_diff_a_minus_b,Metric
+population_residual,gompertz_bayes,sq_error_y,7.2532040705640545e-06,-0.0418908091247264,Squared log error
+population_residual,gompertz_bayes,abs_error_y,9.706554505413755e-06,-0.0407341023266495,Absolute log error
+population_residual,gompertz_bayes,sq_error_V,0.0001646168293545,-0.8503007802843305,Squared volume error
+population_residual,gompertz_bayes,abs_error_V,4.572319817469867e-05,-0.0914451265267286,Absolute volume error

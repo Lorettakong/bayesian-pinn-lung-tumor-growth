@@ -1,0 +1,11 @@
+Group,Method,n,RMSE_log,MAE_volume,Coverage,Interval_score
+Hard cases (top tertile baseline error),Bayesian Gompertz,100,0.8103674420863732,1.9839697643422227,0.35,29.954373160195267
+Hard cases (top tertile baseline error),Population residual,100,0.7749331725720938,1.7396008057595944,0.35,29.954373160195267
+Hard cases (top tertile baseline error),Population residual + conformal,100,0.7749331725720938,1.7396008057595944,0.85,18.88769253759625
+Hard cases (top tertile baseline error),Residual PINN MAP,100,0.8093695541376289,2.1700211340999997,,
+Hard cases (top tertile baseline error),NLS Gompertz,100,0.8768551672263467,2.6317917493183653,,
+Remaining cases,Bayesian Gompertz,200,0.39061705550159725,0.29063915056180234,0.725,3.2648738887866444
+Remaining cases,Population residual,200,0.34326732291630774,0.27565594006302363,0.725,3.2648738887866444
+Remaining cases,Population residual + conformal,200,0.34326732291630774,0.27565594006302363,1.0,3.265205897155903
+Remaining cases,Residual PINN MAP,200,0.45544575200570975,0.4634998334499999,,
+Remaining cases,NLS Gompertz,200,0.4052037668799091,0.5259409773963355,,

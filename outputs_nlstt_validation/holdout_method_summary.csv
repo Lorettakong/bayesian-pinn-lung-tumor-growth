@@ -1,0 +1,4 @@
+method_display,n_patients_available,rmse_V_holdout,mae_V_holdout,rmse_y_holdout,mae_y_holdout,mean_relative_interval_width_V,mean_interval_score_V,coverage_95CI_V,coverage_minus_target_95CI_V,p_value_sq_log_error_vs_bayes,p_value_abs_volume_error_vs_bayes
+Bayesian PINN,0,,,,,,,,,,
+Deterministic PINN (MAP),0,,,,,,,,,,
+NLS Gompertz,300,2.791124067503602,1.2278912347036788,0.6047741092559216,0.4315570822280891,,,,,,

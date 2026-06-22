@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\caption{Size-aware complexity gate results on the NLSTt-300 cohort.}
+\begin{tabular}{lccccc}
+\toprule
+Method & RMSE (log) & MAE (vol.) & Coverage & Interval score & Residual selected \\
+\midrule
+Bayesian Gompertz & 0.5662 & 0.8551 & 0.600 & 12.1614 & N/A \\
+Residual PINN MAP only & 0.5972 & 1.0323 & N/A & N/A & N/A \\
+Residual-score adaptive gate & 0.5805 & 0.8583 & 0.600 & 12.1614 & N/A \\
+Multi-feature complexity gate & 0.5747 & 0.8519 & 0.600 & 12.1614 & 121 \\
+\textbf{Size-aware complexity gate} & \textbf{0.5513} & \textbf{0.8471} & \textbf{0.600} & \textbf{12.1614} & \textbf{119} \\
+Oracle branch selection & 0.4291 & 0.6664 & 0.600 & 12.1614 & 150 \\
+NLS Gompertz & 0.6048 & 1.2279 & N/A & N/A & N/A \\
+\bottomrule
+\end{tabular}
+\end{table}

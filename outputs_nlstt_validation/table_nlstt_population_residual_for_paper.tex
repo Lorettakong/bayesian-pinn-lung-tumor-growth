@@ -1,0 +1,15 @@
+\begin{table}[t]
+\centering
+\caption{Population residual correction results on the NLSTt-300 cohort.}
+\begin{tabular}{lccccc}
+\toprule
+Method & RMSE (log) & MAE (vol.) & Coverage & Interval score & Rel. width \\
+\midrule
+Bayesian Gompertz & 0.5662 & 0.8551 & 0.600 & 12.1614 & 1.134 \\
+Gompertz-guided population residual & 0.5279 & 0.7636 & 0.600 & 12.1614 & 1.134 \\
+\textbf{Population residual + conformal} & \textbf{0.5279} & \textbf{0.7636} & \textbf{0.950} & \textbf{8.4727} & \textbf{2.857} \\
+Residual PINN MAP only & 0.5972 & 1.0323 & N/A & N/A & N/A \\
+NLS Gompertz & 0.6048 & 1.2279 & N/A & N/A & N/A \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\caption{Conformal calibration of predictive intervals on the NLSTt-300 cohort.}
+\begin{tabular}{lccccc}
+\toprule
+Method & RMSE (log) & MAE (vol.) & Coverage & Interval score & Rel. width \\
+\midrule
+Bayesian Gompertz & 0.5662 & 0.8551 & 0.600 & 12.1614 & 1.134 \\
+Size-aware complexity gate & 0.5513 & 0.8471 & 0.600 & 12.1614 & 1.134 \\
+Bayesian Gompertz + conformal & 0.5662 & 0.8551 & 0.950 & 8.2988 & 2.771 \\
+\textbf{Size-aware gate + conformal} & \textbf{0.5513} & \textbf{0.8471} & \textbf{0.950} & \textbf{8.0198} & \textbf{2.710} \\
+Bayesian Gompertz + scaled conformal & 0.5662 & 0.8551 & 0.950 & 9.0625 & 2.979 \\
+Size-aware gate + scaled conformal & 0.5513 & 0.8471 & 0.950 & 8.4560 & 2.985 \\
+\bottomrule
+\end{tabular}
+\end{table}

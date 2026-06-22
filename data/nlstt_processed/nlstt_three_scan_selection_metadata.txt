@@ -1,0 +1,32 @@
+NLSTt three-scan CT-derived nodule-volume dataset
+Source: STMixer/data/registration coordinates/data.csv
+Volume: ellipsoid approximation pi/6 * dx_world * dy_world * dz_world / 1000 cm^3
+Important: these are CT-derived lung nodule volumes, not official tumor-volume ground truth.
+
+Selection criteria:
+- Required exactly study_year (0, 1, 2) for the same nodId.
+- Required positive finite dx/dy/dz world-coordinate diameters.
+- Axis range: [3.0, 80.0] mm.
+- Volume range: [0.02, 20.0] cm^3 at all time points.
+- Max adjacent absolute log-volume change <= log(12).
+- Target sample size: 800, selected by growth-class stratification.
+
+Source filtering counts:
+- all_nodules: 10029
+- eligible_three_timepoint_trajectories: 8603
+- excluded_duplicate_or_bad_year: 22
+- excluded_extreme_adjacent_change: 35
+- excluded_invalid_size_or_volume: 20
+- excluded_not_three_required_years: 1349
+
+Eligible growth-class counts: {'decreasing': 1066, 'rapid_growth': 262, 'slow_growth': 1387, 'stable': 5888}
+Selected growth-class counts: {'decreasing': 200, 'rapid_growth': 200, 'slow_growth': 200, 'stable': 200}
+Selected trajectories: 800
+Selected unique NLST subjects: 692
+Rows in model input: 2400
+
+Output files:
+- nlstt_three_scan_volume_model_input.csv: minimal patient_id,t_rel,V_obs model input.
+- nlstt_three_scan_volume_long_with_metadata.csv: long-format file with dimensions and identifiers.
+- nlstt_three_scan_trajectory_summary.csv: one row per selected nodule trajectory.
+- nlstt_three_scan_all_eligible_summary.csv: one row per all eligible nodule trajectory.
