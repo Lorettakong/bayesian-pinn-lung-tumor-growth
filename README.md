@@ -6,24 +6,23 @@ outputs for the study:
 **Uncertainty-Aware Mechanistic Misspecification Correction for Sparse
 Longitudinal CT-Derived Lung Nodule Trajectory Prediction**
 
-The current manuscript evaluates sparse three-scan lung nodule trajectory
-prediction using CT-derived measurements from the NLSTt dataset. The proposed
-framework uses a Bayesian Gompertz model as an interpretable mechanistic
-backbone, learns a regularized population-level mechanistic deviation
-correction from pre-holdout trajectory features, and applies conformal
-calibration to improve predictive interval reliability.
+The study evaluates sparse three-scan lung nodule trajectory prediction using
+CT-derived measurements from the NLSTt dataset. The proposed framework uses a
+Bayesian Gompertz model as an interpretable mechanistic backbone, learns a
+regularized population-level mechanistic deviation correction from pre-holdout
+trajectory features, and applies conformal calibration to improve predictive
+interval reliability.
 
 ## What Is Included
 
 - NLSTt three-scan cohort construction utilities and processed modeling tables
-- Bayesian Gompertz MAP/HMC fitting and posterior predictive utilities
-- Regularized mechanistic deviation correction scripts
-- Simple, data-driven, mechanistic, and neural baseline scripts
-- Conformal calibration and uncertainty evaluation scripts
-- Manuscript-facing figures and tables for the current BSPC submission
+- Bayesian Gompertz-guided mechanistic deviation correction code
+- Simple longitudinal, data-driven, mechanistic, and residual-neural baseline
+  comparison outputs
+- Conformal calibration and uncertainty evaluation outputs
+- Manuscript-facing figures and tables for the BSPC submission
 - MAP-based robustness outputs on all 8603 eligible three-scan NLSTt
   trajectories
-- Legacy Bayesian PINN scripts retained for provenance and comparison
 
 ## Repository Layout
 
@@ -33,39 +32,34 @@ calibration to improve predictive interval reliability.
 
 - `nlstt_population_residual_pipeline.py`  
   Main grouped cross-validation pipeline for Bayesian Gompertz-guided
-  population-level mechanistic deviation correction.
+  mechanistic deviation correction.
 
 - `generate_nlstt_population_residual_paper_outputs.py`  
   Exports manuscript-ready tables and figures from the NLSTt-300 evaluation.
 
 - `generate_additional_results_effect_error_lambda.py`  
   Generates residual diagnostics, effect-size tables, error summaries, and
-  shrinkage-sensitivity outputs used in the revised manuscript.
+  shrinkage-sensitivity outputs used in the manuscript.
 
 - `compute_naive_baselines.py`, `compute_population_baselines_300.py`,
   `compute_enhanced_baseline_stats.py`  
   Baseline and paired-statistics utilities for simple longitudinal
-  extrapolation, Gaussian process regression, NLS Gompertz, and neural
+  extrapolation, Gaussian process regression, NLS Gompertz, and residual-neural
   baselines.
 
 - `run_nlstt_8603_map_robustness.py`  
   MAP-based robustness experiment on all 8603 eligible NLSTt three-scan
   trajectories.
 
-- `plot_gompertz_residual_diagnostics.py`,
-  `plot_gompertz_residual_structure.py`,
-  `plot_prediction_error_ecdf.py`  
-  Diagnostic plotting scripts for residual structure and prediction-error
-  analyses.
+- `plot_gompertz_residual_diagnostics.py`  
+  Generates the refined residual-structure diagnostic figure used in the
+  Results section.
 
 - `data/nlstt_processed/`  
   Processed NLSTt three-scan tables and cohort-construction metadata.
 
-- `outputs_nlstt_validation/`  
-  Validation outputs for the NLSTt-300 cohort.
-
 - `outputs_nlstt_validation/paper_outputs_population_residual/`  
-  Main manuscript-facing tables and figures for the current paper.
+  Main manuscript-facing tables and figures.
 
 - `outputs_nlstt_8603_map_robustness/`  
   Supplemental MAP-based robustness experiment on all eligible three-scan
@@ -76,8 +70,8 @@ calibration to improve predictive interval reliability.
   `outputs_enhanced_baseline_stats/`  
   Baseline prediction files and paired statistical summaries.
 
-- `docs/`  
-  Method notes, release notes, and manuscript-output descriptions.
+- `docs/NLSTT_MANUSCRIPT_OUTPUTS.md`  
+  Description of the manuscript output files.
 
 ## Main Manuscript Outputs
 
@@ -99,7 +93,7 @@ Important files include:
 - `fig_lambda_sensitivity.pdf/.png`
 - `fig_calibration_interval_score.pdf/.png`
 
-## Key Results Preserved in This Repository
+## Key Results
 
 On the stratified NLSTt-300 three-scan evaluation cohort, the Bayesian
 Gompertz backbone achieved a log-volume RMSE of `0.5662` and a
@@ -133,31 +127,16 @@ Main packages:
 - `numpy`
 - `pandas`
 - `scipy`
-- `torch`
 - `matplotlib`
-- `pydicom`
-- `pynrrd`
 
 ## Reproducibility Notes
 
-The public repository includes processed NLSTt-derived tables used for the
-manuscript analyses. The CT-derived volumes are approximate ellipsoidal
-volumes computed from NLSTt nodule extents, not pathologically confirmed
-malignant tumor burden.
+The repository includes processed NLSTt-derived tables used for the manuscript
+analyses. The CT-derived volumes are approximate ellipsoidal volumes computed
+from NLSTt nodule extents, not pathologically confirmed malignant tumor
+burden.
 
-Some legacy scripts retained from the earlier Bayesian PINN manuscript still
-use the original absolute default path
-`/Users/zhiqiangkong/Desktop/DATA/tumor_volumes.csv`. These scripts are kept
-for provenance. For fresh local runs, update their `csv_path` configuration to
-point to the desired modeling table.
-
-The current NLSTt manuscript scripts added in this release use repository
-relative paths where possible.
-
-## Public Release Scope
-
-This repository is intended to accompany manuscript review and public release.
-Large intermediate model checkpoints, local virtual environments, IDE files,
-and raw CT image data are intentionally excluded. The included outputs are the
-compact manuscript-facing tables and figures needed to inspect and reproduce
-the reported analyses.
+Raw NLST CT images are not included. The processed tables and manuscript-facing
+outputs are provided so readers can inspect the cohort construction,
+prediction results, statistical comparisons, and figures reported in the
+paper.

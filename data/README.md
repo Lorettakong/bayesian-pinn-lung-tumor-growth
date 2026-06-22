@@ -1,23 +1,7 @@
 # Data
 
-This repository contains two processed data groups.
-
-## Legacy patient-level tumor-volume table
-
-`volumetric_data.csv` is the compact patient-timepoint table used by the
-earlier Bayesian PINN experiments, with columns such as:
-
-- `patient_id`
-- `t_rel`
-- `V_obs`
-
-Some legacy scripts still reference this table through their local
-configuration blocks.
-
-## NLSTt three-scan nodule-volume tables
-
 `nlstt_processed/` contains the processed NLSTt-derived tables used by the
-current mechanistic misspecification correction manuscript.
+mechanistic misspecification correction manuscript.
 
 Main files:
 
@@ -30,6 +14,9 @@ Main files:
 
 - `nlstt_three_scan_all_eligible_summary.csv`  
   Trajectory-level summary for all eligible three-scan NLSTt trajectories.
+
+- `nlstt_three_scan_volume_model_input.csv`  
+  Compact modeling input table derived from the final stratified cohort.
 
 - `nlstt_three_scan_selection_metadata.txt`  
   Cohort-construction counts and filtering notes.

@@ -343,12 +343,10 @@ def main():
     # Load prior method summaries if available.
     rows = [
         summarize(df, "gompertz_bayes", "Bayesian Gompertz"),
-        summarize(df, "population_residual", "Gompertz-guided population residual"),
-        summarize(df, "population_residual_conformal", "Population residual + conformal"),
+        summarize(df, "population_residual", "Proposed mechanistic correction framework"),
+        summarize(df, "population_residual_conformal", "Proposed framework + conformal"),
     ]
     for optional, display in [
-        ("size_complexity_gate", "Size-aware complexity gate"),
-        ("size_gate_conformal_add", "Size-aware gate + conformal"),
         ("residual_map", "Residual PINN MAP only"),
         ("nls", "NLS Gompertz"),
     ]:
@@ -358,7 +356,7 @@ def main():
     summary.to_csv(OUT / "nlstt_population_residual_summary.csv", index=False)
 
     stats = []
-    for b in ["gompertz_bayes", "size_complexity_gate", "residual_map", "nls"]:
+    for b in ["gompertz_bayes", "residual_map", "nls"]:
         if f"{b}_error_y" not in df:
             continue
         for metric in ["sq_error_y", "abs_error_y", "sq_error_V", "abs_error_V"]:
@@ -375,9 +373,8 @@ def main():
     for subset, sub in [("All", df), *[(f"Growth class: {k}", v) for k, v in df.groupby("growth_class")]]:
         for method, display in [
             ("gompertz_bayes", "Bayesian Gompertz"),
-            ("population_residual", "Population residual"),
-            ("size_complexity_gate", "Size-aware gate"),
-            ("residual_map", "Residual MAP"),
+            ("population_residual", "Proposed mechanistic correction framework"),
+            ("residual_map", "Residual PINN MAP only"),
         ]:
             if f"{method}_error_y" not in sub:
                 continue

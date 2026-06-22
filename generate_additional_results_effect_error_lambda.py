@@ -116,49 +116,6 @@ def write_effect_size_table(df: pd.DataFrame):
     return out
 
 
-def plot_error_distribution(df: pd.DataFrame):
-    data = [
-        df["gompertz_bayes_sq_error_y"].to_numpy(float),
-        df["population_residual_sq_error_y"].to_numpy(float),
-        df["gompertz_bayes_abs_error_V"].to_numpy(float),
-        df["population_residual_abs_error_V"].to_numpy(float),
-    ]
-    labels = ["Bayesian\nGompertz", "Proposed\nresidual", "Bayesian\nGompertz", "Proposed\nresidual"]
-    colors = ["#647985", "#1f9d72", "#647985", "#1f9d72"]
-
-    fig, axes = plt.subplots(1, 2, figsize=(8.2, 3.7))
-    rng = np.random.default_rng(7)
-    for ax, vals, lab, col, title, ylabel in [
-        (axes[0], data[:2], labels[:2], colors[:2], "Squared log-volume error", "Squared log-volume error"),
-        (axes[1], data[2:], labels[2:], colors[2:], "Absolute volume error", "Absolute volume error (cm$^3$)"),
-    ]:
-        bp = ax.boxplot(vals, patch_artist=True, widths=0.48, showfliers=False)
-        for patch, c in zip(bp["boxes"], col):
-            patch.set_facecolor(c)
-            patch.set_alpha(0.28)
-            patch.set_edgecolor(c)
-        for med in bp["medians"]:
-            med.set_color("#1f2328")
-            med.set_linewidth(1.6)
-        for i, y in enumerate(vals, start=1):
-            y = np.asarray(y, dtype=float)
-            y = y[np.isfinite(y)]
-            x = rng.normal(i, 0.045, size=len(y))
-            ax.scatter(x, y, s=9, color=col[i - 1], alpha=0.35, linewidth=0)
-        ax.set_xticks([1, 2])
-        ax.set_xticklabels(lab)
-        ax.set_title(title, fontsize=10)
-        ax.set_ylabel(ylabel)
-        ax.grid(axis="y", alpha=0.24)
-        ax.spines["top"].set_visible(False)
-        ax.spines["right"].set_visible(False)
-    fig.suptitle("Held-out prediction error distributions", fontsize=11, y=1.02)
-    fig.tight_layout()
-    for ext in ["png", "pdf"]:
-        fig.savefig(OUT / f"fig_prediction_error_distribution.{ext}", dpi=300, bbox_inches="tight")
-    plt.close(fig)
-
-
 def recompute_unshrunk_residual_predictions():
     df = load_frame().sort_values("patient_id", kind="mergesort").reset_index(drop=True)
     X = df[BASE_FEATURES].to_numpy(float)
@@ -257,9 +214,8 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     df = pd.read_csv(SRC / "nlstt_population_residual_patient_level.csv")
     eff = write_effect_size_table(df)
-    plot_error_distribution(df)
     sens = run_lambda_sensitivity()
-    print("Saved effect-size table, error distribution figure, and lambda sensitivity outputs to:")
+    print("Saved effect-size table and lambda sensitivity outputs to:")
     print(OUT)
     print("\nEffect sizes:")
     print(eff.to_string(index=False))

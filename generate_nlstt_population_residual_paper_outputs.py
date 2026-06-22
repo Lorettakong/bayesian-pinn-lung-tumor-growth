@@ -216,16 +216,27 @@ def plot_cases(df: pd.DataFrame):
     for case_no, (ax, panel, (_, r)) in enumerate(zip(axes.ravel(), panel_labels, cases.iterrows()), start=1):
         t = np.array([0, 1, 2], dtype=float)
         v = np.array([r["V0"], r["V1"], r["holdout_V_obs"]], dtype=float)
+        y = np.log(v)
         x_bg = 1.96
         x_prop = 2.04
-        ax.plot(t[:2], v[:2], "o-", color="#1f2328", linewidth=1.6, markersize=4.8, label="Observed input")
-        ax.scatter([2], [v[2]], color="#d55e00", s=34, zorder=5, label="Held-out observation")
+        bg_pred = float(r["gompertz_bayes_pred_y"])
+        prop_pred = float(r["population_residual_pred_y"])
+        bg_low = np.log(max(float(r["gompertz_bayes_interval_low_V"]), 1e-12))
+        bg_high = np.log(max(float(r["gompertz_bayes_interval_high_V"]), 1e-12))
+        prop_low = np.log(max(float(r["population_residual_conformal_interval_low_V"]), 1e-12))
+        prop_high = np.log(max(float(r["population_residual_conformal_interval_high_V"]), 1e-12))
+        bg_abs = abs(float(r["gompertz_bayes_error_y"]))
+        prop_abs = abs(float(r["population_residual_error_y"]))
+        bg_resid = float(r["holdout_y_obs"] - r["gompertz_bayes_pred_y"])
+
+        ax.plot(t[:2], y[:2], "o-", color="#1f2328", linewidth=1.6, markersize=4.8, label="Observed input")
+        ax.scatter([2], [y[2]], color="#d55e00", s=34, zorder=5, label="Held-out observation")
         ax.errorbar(
             [x_bg],
-            [r["gompertz_bayes_pred_V"]],
+            [bg_pred],
             yerr=[
-                [max(r["gompertz_bayes_pred_V"] - r["gompertz_bayes_interval_low_V"], 0)],
-                [max(r["gompertz_bayes_interval_high_V"] - r["gompertz_bayes_pred_V"], 0)],
+                [max(bg_pred - bg_low, 0)],
+                [max(bg_high - bg_pred, 0)],
             ],
             fmt="s",
             color="#536d79",
@@ -237,10 +248,10 @@ def plot_cases(df: pd.DataFrame):
         )
         ax.errorbar(
             [x_prop],
-            [r["population_residual_pred_V"]],
+            [prop_pred],
             yerr=[
-                [max(r["population_residual_pred_V"] - r["population_residual_conformal_interval_low_V"], 0)],
-                [max(r["population_residual_conformal_interval_high_V"] - r["population_residual_pred_V"], 0)],
+                [max(prop_pred - prop_low, 0)],
+                [max(prop_high - prop_pred, 0)],
             ],
             fmt="D",
             color="#1f9d72",
@@ -250,10 +261,18 @@ def plot_cases(df: pd.DataFrame):
             markersize=5.8,
             label="Proposed (95% PI)",
         )
+        ax.text(
+            0.52,
+            0.13,
+            f"|e| log: BG={bg_abs:.2f}, Prop={prop_abs:.2f}\nBG residual r={bg_resid:.2f}",
+            transform=ax.transAxes,
+            fontsize=7.6,
+            bbox=dict(facecolor="white", edgecolor="#bdbdbd", alpha=0.88, boxstyle="round,pad=0.25"),
+        )
         ax.text(0.02, 0.95, panel, transform=ax.transAxes, ha="left", va="top", fontsize=9, fontweight="bold")
         ax.set_title(f"Case {case_no}: {str(r['growth_class']).replace('_', ' ')}", fontsize=8.5, pad=5)
         ax.set_xlabel("Time since baseline", fontsize=8)
-        ax.set_ylabel("Volume (cm$^3$)", fontsize=8)
+        ax.set_ylabel("Log volume", fontsize=8)
         ax.set_xlim(-0.1, 2.16)
         ax.set_xticks([0, 1, 2])
         ax.set_xticklabels(["0", "1", "2"])
@@ -264,7 +283,7 @@ def plot_cases(df: pd.DataFrame):
     handles, labels = axes.ravel()[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="lower center", ncol=4, frameon=False, fontsize=7.6)
     fig.tight_layout(rect=[0, 0.08, 1, 1], h_pad=1.5, w_pad=1.6)
-    _savefig("fig_case_examples")
+    _savefig("fig_case_examples_log")
 
 
 def plot_permutation_audit(audit: pd.DataFrame):
@@ -286,25 +305,27 @@ def plot_permutation_audit(audit: pd.DataFrame):
 
 
 def write_readme():
-    text = """NLSTt population residual paper outputs
+    text = """NLSTt mechanistic correction manuscript outputs
 
-This folder contains paper-ready outputs generated from the leakage-free pipeline.
+This folder contains manuscript-ready outputs generated from the leakage-free
+NLSTt-300 evaluation pipeline.
 
 Main files:
-- table_main_population_residual.tex/csv: main performance table.
-- table_feature_ablation_no_leakage.tex/csv: feature ablation and sanity evidence.
-- table_paired_tests_vs_bayesian_gompertz.tex/csv: paired Wilcoxon tests.
-- fig_method_comparison.png/pdf: cohort-level error comparison.
-- fig_paired_improvement.png/pdf: patient-wise improvement over Bayesian Gompertz.
+- table1_ablation_rmse_mae_for_paper.tex/csv: ablation of correction features.
+- table2_methods_with_stats_for_paper.tex/csv: baseline comparison table.
+- table_effect_size_paired_tests.tex/csv: paired Wilcoxon tests and effect sizes.
+- table_hard_case_subgroup_for_paper.csv: challenging-case subgroup results.
+- table_lambda_sensitivity.tex/csv: residual shrinkage sensitivity.
+- fig_case_examples_log.png/pdf: illustrative log-volume single-trajectory examples.
+- fig_gompertz_residual_diagnostics_refined.png/pdf: residual-structure diagnostics.
+- fig_lambda_sensitivity.png/pdf: shrinkage sensitivity figure.
 - fig_calibration_interval_score.png/pdf: coverage and interval score after conformal calibration.
-- fig_subgroup_growth_class_rmse.png/pdf: subgroup RMSE by growth class.
-- fig_case_examples.png/pdf: illustrative single-patient examples.
-- fig_permutation_sanity_check.png/pdf: target permutation sanity check.
 
 Important leakage note:
 The proposed residual learner uses only features available before observing the held-out third CT scan:
 baseline/follow-up volumes, first-interval growth descriptors, and Bayesian Gompertz predictions/uncertainty
-computed from the first two scans. The previous holdout-normalized relative interval width was removed.
+computed from the first two scans. Held-out third-scan observations are used only as training targets
+inside the appropriate training folds and for final evaluation.
 """
     (OUT / "README_outputs.txt").write_text(text)
 
